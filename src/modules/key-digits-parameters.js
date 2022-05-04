@@ -1,0 +1,88 @@
+const keyDigitsParameters = {
+  Digit1: {
+    code: 'Digit1',
+    en: '1',
+    enShift: '!',
+    ruShift: '!',
+    order: '1',
+  },
+  Digit2: {
+    code: 'Digit2',
+    en: '2',
+    enShift: '@',
+    ruShift: '"',
+    order: '2',
+  },
+  Digit3: {
+    code: 'Digit3',
+    en: '3',
+    enShift: '#',
+    ruShift: '№',
+    order: '3',
+  },
+  Digit4: {
+    code: 'Digit4',
+    en: '4',
+    enShift: '$',
+    ruShift: ';',
+    order: '4',
+  },
+  Digit5: {
+    code: 'Digit5',
+    en: '5',
+    enShift: '%',
+    ruShift: '%',
+    order: '5',
+  },
+  Digit6: {
+    code: 'Digit6',
+    en: '6',
+    enShift: '^',
+    ruShift: ':',
+    order: '6',
+  },
+  Digit7: {
+    code: 'Digit7',
+    en: '7',
+    enShift: '&',
+    ruShift: '?',
+    order: '7',
+  },
+  Digit8: {
+    code: 'Digit8',
+    en: '8',
+    enShift: '*',
+    ruShift: '*',
+    order: '8',
+  },
+  Digit9: {
+    code: 'Digit9',
+    en: '9',
+    enShift: '(',
+    ruShift: '(',
+    order: '9',
+  },
+  Digit0: {
+    code: 'Digit0',
+    en: '0',
+    enShift: ')',
+    ruShift: ')',
+    order: '10',
+  },
+  NumpadSubtract: {
+    code: 'NumpadSubtract',
+    en: '-',
+    enShift: '_',
+    ruShift: '_',
+    order: '11',
+  },
+  Equal: {
+    code: 'Equal',
+    en: '=',
+    enShift: '+',
+    ruShift: '+',
+    order: '12',
+  },
+};
+
+export default keyDigitsParameters;
