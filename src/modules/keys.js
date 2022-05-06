@@ -1,7 +1,3 @@
-// import keyLettersParameters from './key-letters-parameters.js';
-// import keyDigitsParameters from './key-digits-parameters.js';
-// import keySpecialParameters from './key-special-parameters.js';
-
 class Key {
   constructor(keyType, keyboard, text, keysStatement) {
     this.keyType = keyType;
@@ -34,7 +30,6 @@ class Key {
   }
 
   print() {
-    // let textValue = this.text.value;
     let newSymbol = '';
     newSymbol = this.btn.textContent;
     this.text.setRangeText(newSymbol, this.text.selectionStart, this.text.selectionEnd, 'end');
@@ -90,9 +85,7 @@ class Key {
 
   space() {
     this.btnContent.innerHTML = this.keyType.spec;
-    // let textValue = this.text.value;
     const newSymbol = this.btnContent.innerHTML;
-    // this.text.value = textValue;
     this.text.setRangeText(newSymbol, this.text.selectionStart, this.text.selectionEnd, 'end');
   }
 

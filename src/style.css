@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: "Roboto";
+  background-color: #0d1129;
+}
+
+.header {
+  display: flex;
+  height: 40px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  color: #38f26d;
+  text-shadow: 0 0 3px #acfaa5, 0 0 5px #c8f9c3;
+}
+
+.text {
+  margin: 0;
+  color: #38f26d;
+  text-shadow: 0 0 3px #acfaa5;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 20px;
+  height: auto;
+  width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.textarea {
+  font-family: "Roboto";
+  font-size: 16px;
+  height: 270px;
+  width: 620px;
+  box-sizing: border-box;
+  padding: 5px;
+  resize: none;
+  border: 10px solid #cce5eb;
+  border-radius: 10px;
+  caret-color: #acfaa5;
+  color: #acfaa5;
+  text-shadow: 0 0 2px #c8f9c3;
+  box-shadow: 0 0 5px 2px inset;
+  background: linear-gradient(#052b12, #063627);
+}
+.textarea:focus {
+  outline: none;
+}
+
+.keyboard-container {
+  display: flex;
+  width: 710px;
+  height: auto;
+  padding: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  background-color: #2d3442;
+  border: 3px solid #cce5eb;
+  border-radius: 3px;
+}
+
+.key {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background-color: #5f7188;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 4px solid #121c15;
+  color: #121c15;
+  border-radius: 3px;
+}
+.key:hover {
+  background-color: #97b1cf;
+}
+.key.active {
+  animation: ease-in-out 0.1s keys-change forwards;
+}
+.key.backspace {
+  width: 125px;
+}
+.key.delete, .key.tab {
+  width: 60px;
+}
+.key.caps-lock {
+  width: 105px;
+}
+.key.caps-lock-active {
+  color: #38f26d;
+}
+.key.enter {
+  width: 105px;
+}
+.key.shift-left, .key.shift-right {
+  width: 105px;
+}
+.key.space {
+  width: 310px;
+}
+.key.control-right, .key.control-left {
+  width: 60px;
+}
+
+@keyframes keys-change {
+  from {
+    color: #121c15;
+    border: 4px solid #121c15;
+    font-size: 14px;
+    box-shadow: none;
+  }
+  to {
+    color: #38f26d;
+    border: 4px solid #38f26d;
+    font-size: 16px;
+    box-shadow: 0px 0px 3px 3px #acfaa5;
+  }
+}
+

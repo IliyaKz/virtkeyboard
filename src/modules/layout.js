@@ -4,6 +4,9 @@ import Key from './keys.js';
 export default class Layout {
   constructor() {
     this.header = null;
+    this.title = null;
+    this.text1 = null;
+    this.text2 = null;
     this.container = null;
     this.keyboardContainer = null;
     this.keyboard = null;
@@ -27,7 +30,6 @@ export default class Layout {
   }
 
   init() {
-    console.log(this.lang);
     this.container = document.createElement('div');
     this.container.classList.add('main-container');
     document.body.prepend(this.container);
@@ -42,7 +44,19 @@ export default class Layout {
     this.container.append(this.keyboardContainer);
     this.header = document.createElement('header');
     this.header.classList.add('header');
+    this.title = document.createElement('h1');
+    this.title.classList.add('title');
+    this.title.textContent = 'Виртуальная Клавиатура';
+    this.text1 = document.createElement('p');
+    this.text1.classList.add('text');
+    this.text1.textContent = 'Клавиатура создана на основе ОС Windows';
+    this.text2 = document.createElement('p');
+    this.text2.classList.add('text');
+    this.text2.textContent = 'Для переключения языка используйте комбинацию левый Ctrl + левый Alt';
     document.body.prepend(this.header);
+    this.header.append(this.title);
+    this.container.append(this.text1);
+    this.container.append(this.text2);
     Object.values(keysParameters).forEach((item) => {
       const keyItem = new Key(item, this.keyboardContainer, this.text, this.params);
       keyItem.createKey(this.params.lang);
@@ -68,11 +82,13 @@ export default class Layout {
           if (!this.params.caps) {
             this.params.caps = true;
             this.params.capsLongTouch = false;
+            keyPressed.btn.classList.add('caps-lock-active');
             this.keys.forEach((item) => {
               item.capsKeys(this.params.lang, this.params.caps);
             });
           } else if (this.params.capsLongTouch) {
             this.params.caps = false;
+            keyPressed.btn.classList.remove('caps-lock-active');
             this.keys.forEach((item) => {
               item.capsKeys(this.params.lang, this.params.caps);
             });
@@ -125,11 +141,14 @@ export default class Layout {
           if (clicked.classCode === 'CapsLock') {
             if (!this.params.caps) {
               this.params.caps = true;
+              this.params.capsLongTouch = true;
+              clicked.btn.classList.add('caps-lock-active');
               this.keys.forEach((item) => {
                 item.capsKeys(this.params.lang, this.params.caps);
               });
             } else {
               this.params.caps = false;
+              clicked.btn.classList.remove('caps-lock-active');
               this.keys.forEach((item) => {
                 item.capsKeys(this.params.lang, this.params.caps);
               });
@@ -154,7 +173,9 @@ export default class Layout {
       }
     });
     document.addEventListener('mousedown', (event) => {
-      event.preventDefault();
+      if (!event.target.classList.contains('textarea')) {
+        event.preventDefault();
+      }
       if (event.target.classList.contains('key')) {
         const clicked = this.keys.find((item) => item.classCode === event.target.dataset.code);
         if (clicked) {
@@ -168,7 +189,7 @@ export default class Layout {
         }
       }
     });
-    document.addEventListener('mouseup', (event) => {
+    document.addEventListener('mouseup', () => {
       this.keys.forEach((item) => {
         item.btn.classList.remove('active');
       });
