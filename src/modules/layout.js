@@ -118,6 +118,65 @@ export default class Layout {
         }
       }
     });
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.contains('key')) {
+        const clicked = this.keys.find((item) => item.classCode === event.target.dataset.code);
+        if (clicked) {
+          if (clicked.classCode === 'CapsLock') {
+            if (!this.params.caps) {
+              this.params.caps = true;
+              this.keys.forEach((item) => {
+                item.capsKeys(this.params.lang, this.params.caps);
+              });
+            } else {
+              this.params.caps = false;
+              this.keys.forEach((item) => {
+                item.capsKeys(this.params.lang, this.params.caps);
+              });
+            }
+          }
+          if (clicked.classCode === 'Enter') {
+            clicked.space();
+          }
+          if (clicked.classCode === 'Tab') {
+            clicked.space();
+          }
+          if (clicked.classCode === 'Backspace') {
+            clicked.backspace();
+          }
+          if (clicked.classCode === 'Delete') {
+            clicked.delete();
+          }
+          if (clicked.printing) {
+            clicked.print();
+          }
+        }
+      }
+    });
+    document.addEventListener('mousedown', (event) => {
+      event.preventDefault();
+      if (event.target.classList.contains('key')) {
+        const clicked = this.keys.find((item) => item.classCode === event.target.dataset.code);
+        if (clicked) {
+          clicked.btn.classList.add('active');
+          if (clicked.classCode === 'ShiftLeft' || clicked.classCode === 'ShiftRight') {
+            this.params.shift = true;
+            this.keys.forEach((item) => {
+              item.shiftKeys(this.params.lang, this.params.caps, this.params.shift);
+            });
+          }
+        }
+      }
+    });
+    document.addEventListener('mouseup', (event) => {
+      this.keys.forEach((item) => {
+        item.btn.classList.remove('active');
+      });
+      this.params.shift = false;
+      this.keys.forEach((item) => {
+        item.shiftKeys(this.params.lang, this.params.caps, this.params.shift);
+      });
+    });
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('lang', this.params.lang);
     });
