@@ -1,5 +1,5 @@
-import keysParameters from './keys-parameters.js';
-import Key from './keys.js';
+import keysParameters from './keys-parameters';
+import Key from './keys';
 
 export default class Layout {
   constructor() {
